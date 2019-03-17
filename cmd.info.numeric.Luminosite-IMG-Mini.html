@@ -1,8 +1,9 @@
 <div style="padding:0;width:70px;min-height:90px;" class="cmd tooltips cmd-widget cursor container-fluid #history# " data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
  	<!-- Info Widget
-		Basé sur les widget de 	: snapnick
-		Mise à jour 			: JAG 20181216 19:00
+		Basé sur les widget de 		: snapnick
+		Mise à jour 			: JAG 20190317 : ajout centrer widget (merci à Antoinekl1)
 	-->
+	<center>
 	<div class="row">
 		<div class="cmdName" id="cmdName#id#" style="font-weight: bold;font-size : 10px; #hideCmdName#;">#name_display# </div>
       	<span class="spanCmd#id#" style="font-size: 18px;font-weight: bold;">#state# #unite#</span><br>	
@@ -12,6 +13,7 @@
       			<span title="Min" class="tooltips">#minHistoryValue#</span>|<span title="Moyenne" class="tooltips" >#averageHistoryValue#</span>|<span title="Max" class="tooltips">#maxHistoryValue#</span> <i class="#tendance#"></i>
       		</div>
 	</div>
+	</center>
   	<script>
 		// Options de personnalisation avec valeur par defaut
 			// Paramètre "sizehw" : à déclarer en pixels - 80 maxi

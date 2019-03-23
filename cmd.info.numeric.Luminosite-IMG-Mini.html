@@ -1,7 +1,7 @@
 <div style="padding:0;width:70px;min-height:90px;" class="cmd tooltips cmd-widget cursor container-fluid #history# " data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
  	<!-- Info Widget
 		Basé sur les widget de 		: snapnick
-		Mise à jour 			: JAG 20190317 : ajout centrer widget (merci à Antoinekl1)
+		Mise à jour			: JAG 20190323 : Correction Bug non actualisation des données
 	-->
 	<center>
 	<div class="row">
@@ -17,36 +17,34 @@
 	</div>
 	</center>
   	<script>
-		// Options de personnalisation avec valeur par defaut
-			// Paramètre "sizehw" : à déclarer en pixels - 80 maxi
-				var srcImgHeight 	= (is_numeric('#sizehw#'))    	? parseFloat('#sizehw#') 	: 30;
-				var srcImgWidth		= (is_numeric('#sizehw#'))    	? parseFloat('#sizehw#') 	: 30;
-			// Paramétrage Niveau
-				var level_1 		= (is_numeric('#level_1#'))  	? parseFloat('#level_1#') 	: 20;
-				var level_2 		= (is_numeric('#level_2#')) 	? parseFloat('#level_2#') 	: 100.0;	
-			// Paramétrage des images
-				var srcImg 			= 'plugins/widget/core/template/mobile/cmd.info.numeric.Luminosite-IMG-Mini/';
-      
+ 		jeedom.cmd.update['#id#'] = function(_options){
+			// Options de personnalisation avec valeur par defaut
+				// Paramètre "sizehw" : à déclarer en pixels - 80 maxi
+					var srcImgHeight 	= (is_numeric('#sizehw#'))    	? parseFloat('#sizehw#') 	: 30;
+					var srcImgWidth		= (is_numeric('#sizehw#'))    	? parseFloat('#sizehw#') 	: 30;
+				// Paramétrage Niveau
+					var level_1 		= (is_numeric('#level_1#'))  	? parseFloat('#level_1#') 	: 20;
+					var level_2 		= (is_numeric('#level_2#')) 	? parseFloat('#level_2#') 	: 100.0;	
+				// Paramétrage des images
+					var srcImgURL 		= 'plugins/widget/core/template/mobile/cmd.info.numeric.Luminosite-IMG-Mini/';
+
       // Update
-			var iconUpdate = function (state){
-                $('.cmd[data-cmd_uid=#uid#] .iconCmd').empty();
-                if (state < level_1 ) {
-                    level 		= "moon.png";
-                } else if (state >= level_1  && state < level_2 ) {
-                    level 		= "cloud.png";
-                } else if (state >= level_2) {
-                  	level 		= "sun.png";
+			var srcPictureID;     
+			var State = parseFloat(_options.display_value);	
+                if (State < level_1){
+                    srcPictureID = 'moon.png';
+                } else if (State >= level_1 && State < level_2){
+                    srcPictureID = 'cloud.png';
+                } else if (State >= level_2){
+                    srcPictureID = 'sun.png';  
                 } else {
-                  	level 		= "moon.png";
+                    srcPictureID = 'moon.png';
                 }
-              	// Update Value or img
-              		$('.cmd[data-cmd_uid=#uid#] .iconCmd').html('<img src="'+srcImg +level+'" style="height:' + srcImgHeight +'px;width:' + srcImgWidth +'px;">'); 
-					$('.cmd[data-cmd_uid=#uid#] .state').text(state);
-					};
-	jeedom.cmd.update['#id#'] = function(_options){
-		$('.cmd[data-cmd_uid=#uid#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate)
-		iconUpdate(_options.display_value);
-	}
-	jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
+		// Update Value or img
+          	         $('.cmd[data-cmd_uid=#uid#] .iconCmd').html('<img src="'+srcImgURL +srcPictureID+'" style="height:' + srcImgHeight +'px;width:' + srcImgWidth +'px;">');
+            	    $('.cmd[data-cmd_uid=#uid#] .state').html(State+' '+'#unite#');
+		     		$('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate)        
+   }
+		jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
 	</script>
 </div>

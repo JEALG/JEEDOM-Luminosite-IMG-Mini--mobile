@@ -20,15 +20,15 @@
  		jeedom.cmd.update['#id#'] = function(_options){
 			// Options de personnalisation avec valeur par defaut
 				// Paramètre "sizehw" : à déclarer en pixels - 80 maxi
-							var srcImgHeight 	= (is_numeric('#sizehw#'))    	? parseFloat('#sizehw#') 	: 30;
-							var srcImgWidth		= (is_numeric('#sizehw#'))    	? parseFloat('#sizehw#') 	: 30;
+							var srcImgHeight 	= (is_numeric('#sizeh-M#'))    	? parseFloat('#sizeh-M#') 	: 30;
+							var srcImgWidth		= (is_numeric('#sizew-M#'))    	? parseFloat('#sizew-M#') 	: 30;
 				// Paramétrage Niveau
-							var level_1 			= (is_numeric('#level_1#'))  	? parseFloat('#level_1#') 	: 20;
-							var level_2 			= (is_numeric('#level_2#')) 	? parseFloat('#level_2#') 	: 100.0;	
+							var level_1 		= (is_numeric('#level_1#'))  	? parseFloat('#level_1#') 	: 20;
+							var level_2 		= (is_numeric('#level_2#')) 	? parseFloat('#level_2#') 	: 100.0;	
 				// Paramétrage des images
 							var srcImgURL 		= 'plugins/widget/core/template/mobile/cmd.info.numeric.Luminosite-IMG-Mini/';
               			// Paramètrage du logo Erreur	
-			  				var srcImglogoER		= ('#logo_error#'!='#'+'logo_error#') ? "#logo_error#" : "error";
+			  				var srcImglogoER	= ('#logo_error#'!='#'+'logo_error#') ? "#logo_error#" : "error";
 			  				var srcImglogoER_T 	= ('#logoER_type#'!='#'+'logoER_type#') ? "#logoER_type#" : "png";
 
       		// Update

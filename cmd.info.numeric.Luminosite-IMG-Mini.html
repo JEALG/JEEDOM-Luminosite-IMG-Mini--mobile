@@ -1,57 +1,55 @@
 <div style="padding:0;width:70px;min-height:90px;" class="cmd tooltips cmd-widget cursor container-fluid #history# " data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
- 	<!-- Info Widget
-		Basé sur les widget de 		: snapnick
-		Mise à jour			: JAG 20190323 : Correction Bug non actualisation des données
+    <!-- Info Widget
+        Basé sur les widget de 	: snapnick
+        Mise à jour             : JAG 20190518 : Nettoyage du code
 	-->
-	<center>
-	<div class="row">
-		<center>
-		<div class="cmdName" id="cmdName#id#" style="font-weight: bold;font-size : 10px; #hideCmdName#;">#name_display# </div>
-      		<span class="label" style="font-size: 18px;font-weight: bold;">#state#</span><br>	
-		<div style="font-size: 2.5em;margin-top:-15px;" class="iconCmd"></div>
-      	<!-- Historique -->
-      		<div class="cmdStats #hide_history#" style="#displayHistory# font-weight: bold;font-size : 10px;margin-top:-5px;">
-      			<span title="Min" class="tooltips">#minHistoryValue#</span>|<span title="Moyenne" class="tooltips" >#averageHistoryValue#</span>|<span title="Max" class="tooltips">#maxHistoryValue#</span> <i class="#tendance#"></i>
-      		</div>
-		</center>
-	</div>
-	</center>
-  	<script>
- 		jeedom.cmd.update['#id#'] = function(_options){
-			// Options de personnalisation avec valeur par defaut
-				// Paramètre "sizehw" : à déclarer en pixels - 80 maxi
-							var srcImgHeight 	= (is_numeric('#sizeh-M#'))    	? parseFloat('#sizeh-M#') 	: 30;
-							var srcImgWidth		= (is_numeric('#sizew-M#'))    	? parseFloat('#sizew-M#') 	: 30;
-				// Paramétrage Niveau
-							var level_1 		= (is_numeric('#level_1#'))  	? parseFloat('#level_1#') 	: 20;
-							var level_2 		= (is_numeric('#level_2#')) 	? parseFloat('#level_2#') 	: 100.0;	
-				// Paramétrage des images
-							var srcImgURL 		= 'plugins/widget/core/template/mobile/cmd.info.numeric.Luminosite-IMG-Mini/';
-              			// Paramètrage du logo Erreur	
-			  				var srcImglogoER	= ('#logo_error#'!='#'+'logo_error#') ? "#logo_error#" : "error";
-			  				var srcImglogoER_T 	= ('#logoER_type#'!='#'+'logoER_type#') ? "#logoER_type#" : "png";
-
-      		// Update
-			var srcPictureID;     
-			var State = parseFloat(_options.display_value);	
-                	if (State < level_1){
-                    		srcPictureID = 'moon';
-                	} else if (State >= level_1 && State < level_2){
-                    		srcPictureID = 'cloud';
-                	} else if (State >= level_2){
-                    		srcPictureID = 'sun';  
-                	} else {
-                    		srcPictureID = 'error';
-                	}
-		// Update IMG + gestion erreur
-          		if (srcPictureID == "error"){
-                   		$('.cmd[data-cmd_uid=#uid#] .iconCmd').html('<img src="'+srcImgURL +srcImglogoER+ +'.'+ srcImglogoER_T+'" style="height:' + srcImgHeight +'px;width:' + srcImgWidth +'px;">');
-                    	} else {
-                      		$('.cmd[data-cmd_uid=#uid#] .iconCmd').html('<img src="'+srcImgURL +srcPictureID+ '.png" style="height:' + srcImgHeight +'px;width:' + srcImgWidth +'px;">');
-            	    	}
-            	    	$('.cmd[data-cmd_uid=#uid#] .label').html(State+' '+'#unite#')
-			$('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate)        
-   }
-		jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
+    <div class="row">
+        <center>
+            <div class="cmdName" id="cmdName#id#" style="font-weight: bold;font-size : 10px; #hideCmdName#;">#name_display# </div>
+            <span class="label" style="font-size: 18px;font-weight: bold;">#state#</span><br>	
+            <div style="font-size: 2.5em;margin-top:-15px;" class="iconCmd"></div>
+            <!-- Historique -->
+                <div class="cmdStats #hide_history#" style="#displayHistory# font-weight: bold;font-size : 10px;margin-top:-5px;">
+                    <span title="Min" class="tooltips">#minHistoryValue#</span>|<span title="Moyenne" class="tooltips" >#averageHistoryValue#</span>|<span title="Max" class="tooltips">#maxHistoryValue#</span> <i class="#tendance#"></i>
+                </div>
+        </center>
+    </div>
+    <script>
+        jeedom.cmd.update['#id#'] = function(_options){
+            // Options de personnalisation avec valeur par defaut
+                // Paramètre "sizehw" : à déclarer en pixels - 80 maxi
+                    var srcImgHeight    = (is_numeric('#sizeh-M#'))    	? parseFloat('#sizeh-M#') 	: 30;
+                    var srcImgWidth     = (is_numeric('#sizew-M#'))    	? parseFloat('#sizew-M#') 	: 30;
+                // Paramétrage Niveau
+                    var level_1         = (is_numeric('#level_1-M#'))  	? parseFloat('#level_1-M#') 	: 20;
+                    var level_2         = (is_numeric('#level_2-M#')) 	? parseFloat('#level_2-M#') 	: 100.0;	
+                // Paramétrage des images
+                    var srcImgURL       = 'plugins/widget/core/template/mobile/cmd.info.numeric.Luminosite-IMG-Mini/';
+                // Paramètrage du logo Erreur	
+                    var srcImglogoER    = ('#logo_error#'!='#'+'logo_error#') ? "#logo_error#" : "error";
+                    var srcImglogoER_T  = ('#logoER_type#'!='#'+'logoER_type#') ? "#logoER_type#" : "png";
+            
+            // Update
+                    var srcPictureID;
+                    var State = parseFloat(_options.display_value);	
+                if (State < level_1){
+                    srcPictureID = 'moon';
+                } else if (State >= level_1 && State < level_2){
+                    srcPictureID = 'cloud';
+                } else if (State >= level_2){
+                    srcPictureID = 'sun';  
+                } else {
+                    srcPictureID = 'error';
+                }
+            // Update IMG + gestion erreur
+                if (srcPictureID == "error"){
+                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL +srcImglogoER+ +'.'+ srcImglogoER_T+'" style="height:' + srcImgHeight +'px;width:' + srcImgWidth +'px;">');
+                } else {
+                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL +srcPictureID+ '.png" style="height:' + srcImgHeight +'px;width:' + srcImgWidth +'px;">');
+                }
+            $('.cmd[data-cmd_uid=#uid#] .label').html(State+' '+'#unite#')
+            $('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate)        
+        }
+        jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
 	</script>
 </div>

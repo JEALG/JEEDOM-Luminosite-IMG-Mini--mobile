@@ -6,7 +6,7 @@
     <div class="row">
         <center>
             <div class="cmdName" id="cmdName#id#" style="font-weight: bold;font-size : 10px; #hideCmdName#;">#name_display# </div>
-            <span class="label" style="font-size: 18px;font-weight: bold;">#state#</span><br>	
+            <span class="label" style="font-size: 18px;font-weight: bold;">#state#</span><br>
             <div style="font-size: 2.5em;margin-top:-15px;" class="iconCmd"></div>
             <!-- Historique -->
                 <div class="cmdStats #hide_history#" style="#displayHistory# font-weight: bold;font-size : 10px;margin-top:-5px;">
@@ -28,7 +28,7 @@
                 // Paramètrage du logo Erreur
                     var srcImglogoER    = ('#logo_error#'!='#'+'logo_error#') ? "#logo_error#" : "error";
                     var srcImglogoER_T  = ('#logoER_type#'!='#'+'logoER_type#') ? "#logoER_type#" : "png";
-            
+
             // Update
                     var srcPictureID;
                     var State           = parseFloat(_options.display_value);	
@@ -37,7 +37,7 @@
                 } else if (State >= level_1 && State < level_2){
                     srcPictureID = 'cloud';
                 } else if (State >= level_2){
-                    srcPictureID = 'sun';  
+                    srcPictureID = 'sun';
                 } else {
                     srcPictureID = 'error';
                 }
@@ -47,8 +47,8 @@
                 } else {
                     $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL +srcPictureID+ '.png" style="height:' + srcImgHeight +'px;width:' + srcImgWidth +'px;">');
                 }
-            $('.cmd[data-cmd_uid=#uid#] .label').html(State+' '+'#unite#')
-            $('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate)        
+            $('.cmd[data-cmd_uid=#uid#] .label').html(State+' '+'#unite#');
+            $('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
         }
         jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
 	</script>

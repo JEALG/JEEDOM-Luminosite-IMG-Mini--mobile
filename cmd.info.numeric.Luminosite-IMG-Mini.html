@@ -1,4 +1,4 @@
-<div style="padding:0;width:70px;min-height:90px;" class="cmd tooltips cmd-widget cursor container-fluid #history# " data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
+<div style="padding:0;width:60px;min-height:70px;" class="cmd tooltips cmd-widget cursor container-fluid #history# " data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
     <!-- Info Widget
         Basé sur les widget de 	: snapnick
         Mise à jour             : JAG 20190518 : Nettoyage du code
@@ -6,10 +6,10 @@
     <div class="row">
         <center>
             <div class="cmdName" id="cmdName#id#" style="font-weight: bold;font-size : 10px; #hideCmdName#;">#name_display# </div>
-            <span class="label" style="font-size: 18px;font-weight: bold;">#state#</span><br>
-            <div style="font-size: 2.5em;margin-top:-15px;" class="iconCmd"></div>
+          	<div style="margin-top:-5px;" class="iconCmd#id#"></div>
+            <div class="value#id# timeCmd label label-default value"></div>
             <!-- Historique -->
-                <div class="cmdStats #hide_history#" style="#displayHistory# font-weight: bold;font-size : 10px;margin-top:-5px;">
+                <div class="cmdStats #hide_history#" style="#displayHistory# font-weight: bold;font-size : 10px;">
                     <span title="Min" class="tooltips">#minHistoryValue#</span>|<span title="Moy" class="tooltips">#averageHistoryValue#</span>|<span title="Max" class="tooltips">#maxHistoryValue#</span> <i class="#tendance#"></i>
                 </div>
         </center>
@@ -18,16 +18,16 @@
         jeedom.cmd.update['#id#'] = function(_options){
             // Options de personnalisation avec valeur par defaut
                 // Paramètre "sizehw" : à déclarer en pixels - 80 maxi
-                    var srcImgHeight    = (is_numeric('#sizeh-M#')) ? parseFloat('#sizeh-M#') : 30;
-                    var srcImgWidth     = (is_numeric('#sizew-M#')) ? parseFloat('#sizew-M#') : 30;
+                    var srcImgHeight_M  = (is_numeric('#sizeh-M#')) ? parseFloat('#sizeh-M#') : 30;
+                    var srcImgWidth_M   = (is_numeric('#sizew-M#')) ? parseFloat('#sizew-M#') : 30;
                 // Paramétrage Niveau
-                    var level_1         = (is_numeric('#level_1-M#')) ? parseFloat('#level_1-M#') : 20;
-                    var level_2         = (is_numeric('#level_2-M#')) ? parseFloat('#level_2-M#') : 100.0;
+                    var level_1_M       = (is_numeric('#level_1-M#')) ? parseFloat('#level_1-M#') : 20;
+                    var level_2_M       = (is_numeric('#level_2-M#')) ? parseFloat('#level_2-M#') : 100.0;
                 // Paramétrage des images
-                    var srcImgURL       = 'plugins/widget/core/template/mobile/cmd.info.numeric.Luminosite-IMG-Mini/';
+                    var srcImgURL_M     = 'plugins/widget/core/template/mobile/cmd.info.numeric.Luminosite-IMG-Mini/';
                 // Paramètrage du logo Erreur
-                    var srcImglogoER    = ('#logo_error#'!='#'+'logo_error#') ? "#logo_error#" : "error";
-                    var srcImglogoER_T  = ('#logoER_type#'!='#'+'logoER_type#') ? "#logoER_type#" : "png";
+                    var srcImglogoER_M  = ('#logo_error-M#'!='#'+'logo_error-M#') ? "#logo_error-M#" : "error";
+                    var srcImglogoER_M_T= ('#logoER_type-M#'!='#'+'logoER_type-M#') ? "#logoER_type-M#" : "png";
 
             // Update
                     var srcPictureID;
@@ -43,11 +43,11 @@
                 }
             // Update IMG + gestion erreur
                 if (srcPictureID == "error"){
-                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL +srcImglogoER+ +'.'+ srcImglogoER_T+'" style="height:' + srcImgHeight +'px;width:' + srcImgWidth +'px;">');
+                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL_M +srcImglogoER+ +'.'+ srcImglogoER_M_T+'" style="height:' + srcImgHeight_M +'px;width:' + srcImgWidth_M +'px;">');
                 } else {
-                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL +srcPictureID+ '.png" style="height:' + srcImgHeight +'px;width:' + srcImgWidth +'px;">');
+                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL_M +srcPictureID+ '.png" style="height:' + srcImgHeight_M +'px;width:' + srcImgWidth_M +'px;">');
                 }
-            $('.cmd[data-cmd_uid=#uid#] .label').html(State+' '+'#unite#');
+            $('.cmd[data-cmd_uid=#uid#] .value#id#').empty().append(_options.display_value+' '+'#unite#');
             $('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
         }
         jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});

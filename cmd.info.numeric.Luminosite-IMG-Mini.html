@@ -32,18 +32,18 @@
             // Update
                     var srcPictureID;
                     var State           = parseFloat(_options.display_value);	
-                if (State < level_1){
+                if (State < level_1_M){
                     srcPictureID = 'moon';
-                } else if (State >= level_1 && State < level_2){
+                } else if (State >= level_1_M && State < level_2_M){
                     srcPictureID = 'cloud';
-                } else if (State >= level_2){
+                } else if (State >= level_2_M){
                     srcPictureID = 'sun';
                 } else {
                     srcPictureID = 'error';
                 }
             // Update IMG + gestion erreur
                 if (srcPictureID == "error"){
-                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL_M +srcImglogoER+ +'.'+ srcImglogoER_M_T+'" style="height:' + srcImgHeight_M +'px;width:' + srcImgWidth_M +'px;">');
+                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL_M +srcImglogoER_M+ +'.'+ srcImglogoER_M_T+'" style="height:' + srcImgHeight_M +'px;width:' + srcImgWidth_M +'px;">');
                 } else {
                     $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL_M +srcPictureID+ '.png" style="height:' + srcImgHeight_M +'px;width:' + srcImgWidth_M +'px;">');
                 }

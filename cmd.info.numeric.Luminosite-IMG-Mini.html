@@ -1,4 +1,4 @@
-<div style="padding:0;width:60px;min-height:70px;" class="cmd tooltips cmd-widget cursor container-fluid #history# " data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
+<div style="padding:0;width:60px;min-height:70px;" class="cmd" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
     <!-- Info Widget
         Basé sur les widget de 	: snapnick
         Mise à jour             : JAG 20190518 : Nettoyage du code
@@ -7,7 +7,7 @@
         <center>
             <div class="cmdName" id="cmdName#id#" style="font-weight: bold;font-size : 10px; #hideCmdName#;">#name_display# </div>
           	<div style="margin-top:-5px;" class="iconCmd#id#"></div>
-            <div class="value#id# timeCmd label label-default value"></div>
+            <div class="value#id# timeCmd label value"></div>
             <!-- Historique -->
                 <div class="cmdStats #hide_history#" style="#displayHistory# font-weight: bold;font-size : 10px;">
                     <span title="Min" class="tooltips">#minHistoryValue#</span>|<span title="Moy" class="tooltips">#averageHistoryValue#</span>|<span title="Max" class="tooltips">#maxHistoryValue#</span> <i class="#tendance#"></i>
@@ -30,22 +30,22 @@
                     var srcImglogoER_M_T= ('#logoER_type-M#'!='#'+'logoER_type-M#') ? "#logoER_type-M#" : "png";
 
             // Update
-                    var srcPictureID;
-                    var State           = parseFloat(_options.display_value);	
-                if (State < level_1){
-                    srcPictureID = 'moon';
-                } else if (State >= level_1 && State < level_2){
-                    srcPictureID = 'cloud';
-                } else if (State >= level_2){
-                    srcPictureID = 'sun';
+                    var srcPictureID_M;
+                    var State_M         = parseFloat(_options.display_value);	
+                if (State_M < level_1_M){
+                    srcPictureID_M      = 'moon';
+                } else if (State_M >= level_1_M && State_M < level_2_M){
+                    srcPictureID_M      = 'cloud';
+                } else if (State_M >= level_2_M){
+                    srcPictureID_M      = 'sun';
                 } else {
-                    srcPictureID = 'error';
+                    srcPictureID_M      = 'error';
                 }
             // Update IMG + gestion erreur
-                if (srcPictureID == "error"){
-                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL_M +srcImglogoER+ +'.'+ srcImglogoER_M_T+'" style="height:' + srcImgHeight_M +'px;width:' + srcImgWidth_M +'px;">');
+                if (srcPictureID_M == "error"){
+                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL_M +srcImglogoER_M+ +'.'+ srcImglogoER_M_T+'" style="height:' + srcImgHeight_M +'px;width:' + srcImgWidth_M +'px;">');
                 } else {
-                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL_M +srcPictureID+ '.png" style="height:' + srcImgHeight_M +'px;width:' + srcImgWidth_M +'px;">');
+                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL_M +srcPictureID_M+ '.png" style="height:' + srcImgHeight_M +'px;width:' + srcImgWidth_M +'px;">');
                 }
             $('.cmd[data-cmd_uid=#uid#] .value#id#').empty().append(_options.display_value+' '+'#unite#');
             $('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);

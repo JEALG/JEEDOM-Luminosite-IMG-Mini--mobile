@@ -16,10 +16,18 @@
     </div>
     <script>
         jeedom.cmd.update['#id#'] = function(_options){
-            // Options de personnalisation avec valeur par defaut
-                // Paramètre "sizehw" : à déclarer en pixels - 80 maxi
-                    var srcImgHeight_M  = (is_numeric('#sizeh-M#')) ? parseFloat('#sizeh-M#') : 30;
-                    var srcImgWidth_M   = (is_numeric('#sizew-M#')) ? parseFloat('#sizew-M#') : 30;
+        // Options de personnalisation avec valeur par defaut
+            // Paramètre "sizeh" & "sizew"
+                var srcImgHeight_M	   = is_numeric('#sizeh-M#') ? parseFloat('#sizeh-M#'):30;
+                var srcImgWidth_M 	   = is_numeric('#sizew-M#') ? parseFloat('#sizew-M#'):30;
+                // Type de taille
+                    var srcImgpourcent_M  = ('#Pourcentage-M#'!='#'+'Pourcentage-M#') ? "#Pourcentage-M#" : "NO";
+                    if (srcImgpourcent_M  == "NO") {
+                        var srcImgSize_M  = 'height='+srcImgHeight_M+'px width='+srcImgWidth_M+'px';
+                    } else {
+                        var srcImgSize_M  = 'height='+srcImgHeight_M+'% width='+srcImgWidth_M+'%';
+                    }
+            
                 // Paramétrage Niveau
                     var level_1_M       = (is_numeric('#level_1-M#')) ? parseFloat('#level_1-M#') : 20;
                     var level_2_M       = (is_numeric('#level_2-M#')) ? parseFloat('#level_2-M#') : 100.0;

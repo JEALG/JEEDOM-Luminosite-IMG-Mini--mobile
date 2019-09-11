@@ -1,7 +1,7 @@
 <div style="padding:0;width:60px;min-height:70px;" class="cmd" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
     <!-- Info Widget
         Basé sur les widget de 	: snapnick
-        Mise à jour             : JAG 20190518 : Nettoyage du code
+        Mise à jour             : JAG 20190911 : Normalisation nom images => Merci à mich0111
 	-->
     <div class="row">
         <center>
@@ -32,9 +32,10 @@
                     var level_1_M       = (is_numeric('#level_1-M#')) ? parseFloat('#level_1-M#') : 20;
                     var level_2_M       = (is_numeric('#level_2-M#')) ? parseFloat('#level_2-M#') : 100.0;
                 // Paramétrage des images
-                    var srcImgURL_M     = 'plugins/widget/core/template/mobile/cmd.info.numeric.Luminosite-IMG-Mini/';
+                    var srcImgURL       = 'plugins/widget/core/template/dashboard/cmd.action.other.Multi-action-Defaut/divers/';
+                    var srcImgURL_ER    = 'plugins/widget/core/template/dashboard/cmd.action.other.Multi-action-Defaut/error/';
                 // Paramètrage du logo Erreur
-                    var srcImglogoER_M  = ('#logo_error-M#'!='#'+'logo_error-M#') ? "#logo_error-M#" : "error";
+                    var srcImglogoER_M  = ('#logo_error-M#'!='#'+'logo_error-M#') ? "#logo_error-M#" : "er_oups1";
                     var srcImglogoER_M_T= ('#logoER_type-M#'!='#'+'logoER_type-M#') ? "#logoER_type-M#" : "png";
 
             // Update
@@ -48,6 +49,7 @@
                     srcPictureID_M      = 'sun';
                 } else {
                     srcPictureID_M      = 'error';
+                    srcImgURL           = srcImgURL_ER;
                 }
             // Update IMG + gestion erreur
                 if (srcPictureID_M == "error"){

@@ -32,8 +32,8 @@
                     var level_1_M       = (is_numeric('#level_1-M#')) ? parseFloat('#level_1-M#') : 20;
                     var level_2_M       = (is_numeric('#level_2-M#')) ? parseFloat('#level_2-M#') : 100.0;
                 // Paramétrage des images
-                    var srcImgURL       = 'data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/divers/';
-                    var srcImgURL_ER    = 'data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/error/';
+                    var srcImgURL_M     = 'data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/divers/';
+                    var srcImgURL_M_ER  = 'data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/error/';
                 // Paramètrage du logo Erreur
                     var srcImglogoER_M  = ('#logo_error-M#'!='#'+'logo_error-M#') ? "#logo_error-M#" : "er_oups1";
                     var srcImglogoER_M_T= ('#logoER_type-M#'!='#'+'logoER_type-M#') ? "#logoER_type-M#" : "png";
@@ -49,7 +49,7 @@
                     srcPictureID_M      = 'sun';
                 } else {
                     srcPictureID_M      = 'error';
-                    srcImgURL           = srcImgURL_ER;
+                    srcImgURL_M         = srcImgURL_M_ER;
                 }
             // Update IMG + gestion erreur
                 if (srcPictureID_M == "error"){

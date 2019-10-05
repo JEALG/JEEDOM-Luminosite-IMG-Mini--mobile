@@ -1,19 +1,15 @@
-<div style="padding:0;width:60px;min-height:70px;" class="cmd" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
+<div style="width:90px;height:100%;vertical-align: top;"  class="cmd" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
     <!-- Info Widget
         Basé sur les widget de 	: snapnick
-        Mise à jour             : JAG 20190918 : Migration uniquement pour core V4
+        Mise à jour             : JAG 20191005 : Correction Bug images + présentation widget
 	-->
-    <div class="row">
-        <center>
-            <div class="cmdName" id="cmdName#id#" style="font-weight: bold;font-size : 10px; #hideCmdName#;">#name_display# </div>
-          	<div style="margin-top:-5px;" class="iconCmd#id#"></div>
-            <div class="value#id# timeCmd label value"></div>
-            <!-- Historique -->
-                <div class="cmdStats #hide_history#" style="#displayHistory# font-weight: bold;font-size : 10px;">
-                    <span title="Min" class="tooltips">#minHistoryValue#</span>|<span title="Moy" class="tooltips">#averageHistoryValue#</span>|<span title="Max" class="tooltips">#maxHistoryValue#</span> <i class="#tendance#"></i>
-                </div>
-        </center>
-    </div>
+    <center>
+        <div class="cmdName #hide_name#">#name_display#</div>
+        <div class="iconCmd#id#"></div>
+        <div class="cmdStats #hide_history#" style="#displayHistory# font-size : 10px;">
+            <span title="Min" class="tooltips">#minHistoryValue##unite#</span>|<span title="Moy" class="tooltips">#averageHistoryValue##unite#</span>|<span title="Max" class="tooltips">#maxHistoryValue##unite#</span> <i class="#tendance#"></i>
+        </div>
+    </center>
     <script>
         jeedom.cmd.update['#id#'] = function(_options){
         // Options de personnalisation avec valeur par defaut
@@ -42,11 +38,11 @@
                     var srcPictureID_M;
                     var State_M         = parseFloat(_options.display_value);	
                 if (State_M < level_1_M){
-                    srcPictureID_M      = 'moon';
+                    srcPictureID_M      = 'di_moon';
                 } else if (State_M >= level_1_M && State_M < level_2_M){
-                    srcPictureID_M      = 'cloud';
+                    srcPictureID_M      = 'di_cloud';
                 } else if (State_M >= level_2_M){
-                    srcPictureID_M      = 'sun';
+                    srcPictureID_M      = 'di_sun';
                 } else {
                     srcPictureID_M      = 'error';
                     srcImgURL_M         = srcImgURL_M_ER;

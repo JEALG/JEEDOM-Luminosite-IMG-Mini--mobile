@@ -14,38 +14,38 @@
         jeedom.cmd.update['#id#'] = function(_options){
         // Options de personnalisation avec valeur par defaut
             // Paramètre "sizeh" & "sizew"
-                var srcImgHeight_M	   = is_numeric('#sizeh-M#') ? parseFloat('#sizeh-M#'):30;
-                var srcImgWidth_M 	   = is_numeric('#sizew-M#') ? parseFloat('#sizew-M#'):30;
+                    var srcImgHeight_M      = is_numeric('#sizeh-M#') ? parseFloat('#sizeh-M#'):30;
+                    var srcImgWidth_M       = is_numeric('#sizew-M#') ? parseFloat('#sizew-M#'):30;
                 // Type de taille
-                    var srcImgpourcent_M  = ('#Pourcentage-M#'!='#'+'Pourcentage-M#') ? "#Pourcentage-M#" : "NO";
+                    var srcImgpourcent_M    = ('#Pourcentage-M#'!='#'+'Pourcentage-M#') ? "#Pourcentage-M#" : "NO";
                     if (srcImgpourcent_M  == "NO") {
-                        var srcImgSize_M  = 'height='+srcImgHeight_M+'px width='+srcImgWidth_M+'px';
+                        var srcImgSize_M    = 'height='+srcImgHeight_M+'px width='+srcImgWidth_M+'px';
                     } else if (srcImgpourcent_M  == "YES") {
-                        var srcImgSize_M  = 'height='+srcImgHeight_M+'% width='+srcImgWidth_M+'%';
+                        var srcImgSize_M    = 'height='+srcImgHeight_M+'% width='+srcImgWidth_M+'%';
                     }
             
                 // Paramétrage Niveau
-                    var level_1_M       = (is_numeric('#level_1-M#')) ? parseFloat('#level_1-M#') : 20;
-                    var level_2_M       = (is_numeric('#level_2-M#')) ? parseFloat('#level_2-M#') : 100.0;
+                    var level_1_M           = (is_numeric('#level_1-M#')) ? parseFloat('#level_1-M#') : 20;
+                    var level_2_M           = (is_numeric('#level_2-M#')) ? parseFloat('#level_2-M#') : 100.0;
                 // Paramétrage des images
-                    var srcImgURL_M       = 'plugins/widget/core/template/dashboard/cmd.action.other.Multi-action-Defaut/divers/';
-                    var srcImgURL_ER_M    = 'plugins/widget/core/template/dashboard/cmd.action.other.Multi-action-Defaut/error/';
+                    var srcImgURL_M         = 'plugins/widget/core/template/dashboard/cmd.action.other.Multi-action-Defaut/divers/';
+                    var srcImgURL_ER_M      = 'plugins/widget/core/template/dashboard/cmd.action.other.Multi-action-Defaut/error/';
                 // Paramètrage du logo Erreur
-                    var srcImglogoER_M  = ('#logo_error-M#'!='#'+'logo_error-M#') ? "#logo_error-M#" : "er_oups1";
-                    var srcImglogoER_M_T= ('#logoER_type-M#'!='#'+'logoER_type-M#') ? "#logoER_type-M#" : "png";
+                    var srcImglogoER_M      = ('#logo_error-M#'!='#'+'logo_error-M#') ? "#logo_error-M#" : "er_oups1";
+                    var srcImglogoER_M_T    = ('#logoER_type-M#'!='#'+'logoER_type-M#') ? "#logoER_type-M#" : "png";
 
             // Update
                     var srcPictureID_M;
-                    var State_M         = parseFloat(_options.display_value);	
+                    var State_M             = parseFloat(_options.display_value);	
                 if (State_M < level_1_M){
-                    srcPictureID_M      = 'di_moon';
+                    srcPictureID_M          = 'di_moon';
                 } else if (State_M >= level_1_M && State_M < level_2_M){
-                    srcPictureID_M      = 'di_cloud';
+                    srcPictureID_M          = 'di_cloud';
                 } else if (State_M >= level_2_M){
-                    srcPictureID_M      = 'di_sun';
+                    srcPictureID_M          = 'di_sun';
                 } else {
-                    srcPictureID_M      = 'error';
-                    srcImgURL_M		= srcImgURL_ER_M;
+                    srcPictureID_M          = 'error';
+                    srcImgURL_M             = srcImgURL_ER_M;
                 }
             // Update IMG + gestion erreur
                 if (srcPictureID_M == "error"){

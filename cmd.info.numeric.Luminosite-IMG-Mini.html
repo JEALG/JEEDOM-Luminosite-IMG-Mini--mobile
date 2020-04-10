@@ -1,4 +1,4 @@
-<div style="width:90px;height:100%;vertical-align: top;"  class="cmd" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
+<div style="width:90px;height:100%;vertical-align: top;" class="cmd" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
     <!-- Info Widget
         Basé sur les widget de 	: snapnick
         Mise à jour             : JAG 20191005 : Correction Bug images + présentation widget
@@ -11,51 +11,57 @@
         </div>
     </center>
     <script>
-        jeedom.cmd.update['#id#'] = function(_options){
-        // Options de personnalisation avec valeur par defaut
+        jeedom.cmd.update['#id#'] = function(_options) {
+            // Options de personnalisation avec valeur par defaut
             // Paramètre "sizeh" & "sizew"
-                    var srcImgHeight_M	   = is_numeric('#sizeh-M#') ? parseFloat('#sizeh-M#'):30;
-                    var srcImgWidth_M 	   = is_numeric('#sizew-M#') ? parseFloat('#sizew-M#'):30;
-                // Type de taille
-                    var srcImgpourcent_M    = ('#Pourcentage-M#'!='#'+'Pourcentage-M#') ? "#Pourcentage-M#" : "NO";
-                    if (srcImgpourcent_M  == "NO") {
-                        var srcImgSize_M    = 'height='+srcImgHeight_M+'px width='+srcImgWidth_M+'px';
-                    } else if (srcImgpourcent_M  == "YES") {
-                        var srcImgSize_M    = 'height='+srcImgHeight_M+'% width='+srcImgWidth_M+'%';
-                    }
+            var srcImgHeight_M = is_numeric('#sizeh-M#') ? parseFloat('#sizeh-M#') : 30;
+            var srcImgWidth_M = is_numeric('#sizew-M#') ? parseFloat('#sizew-M#') : 30;
+            // Type de taille
+            var srcImgpourcent_M = ('#Pourcentage-M#' != '#' + 'Pourcentage-M#') ? "#Pourcentage-M#" : "NO";
+            if (srcImgpourcent_M == "NO") {
+                var srcImgSize_M = 'height=' + srcImgHeight_M + 'px width=' + srcImgWidth_M + 'px';
+            } else if (srcImgpourcent_M == "YES") {
+                var srcImgSize_M = 'height=' + srcImgHeight_M + '% width=' + srcImgWidth_M + '%';
+            }
 
-                // Paramétrage Niveau
-                    var level_1_M           = (is_numeric('#level_1-M#')) ? parseFloat('#level_1-M#') : 20;
-                    var level_2_M           = (is_numeric('#level_2-M#')) ? parseFloat('#level_2-M#') : 100.0;
-                // Paramétrage des images
-                    var srcImgURL_M         = 'data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/divers/';
-                    var srcImgURL_M_ER      = 'data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/error/';
-                // Paramètrage du logo Erreur
-                    var srcImglogoER_M      = ('#logo_error-M#'!='#'+'logo_error-M#') ? "#logo_error-M#" : "er_oups1";
-                    var srcImglogoER_M_T    = ('#logoER_type-M#'!='#'+'logoER_type-M#') ? "#logoER_type-M#" : "png";
+            // Paramétrage Niveau
+            var level_1_M = (is_numeric('#level_1-M#')) ? parseFloat('#level_1-M#') : 20;
+            var level_2_M = (is_numeric('#level_2-M#')) ? parseFloat('#level_2-M#') : 100.0;
+            // Paramétrage des images
+            var srcImgURL_M = 'data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/divers/';
+            var srcImgURL_M_ER = 'data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/error/';
+            // Paramètrage du logo Erreur
+            var srcImglogoER_M = ('#logo_error-M#' != '#' + 'logo_error-M#') ? "#logo_error-M#" : "er_oups1";
+            var srcImglogoER_M_T = ('#logoER_type-M#' != '#' + 'logoER_type-M#') ? "#logoER_type-M#" : "png";
 
             // Update
-                    var srcPictureID_M;
-                    var State_M             = parseFloat(_options.display_value);
-                if (State_M < level_1_M){
-                    srcPictureID_M          = 'di_moon';
-                } else if (State_M >= level_1_M && State_M < level_2_M){
-                    srcPictureID_M          = 'di_cloud';
-                } else if (State_M >= level_2_M){
-                    srcPictureID_M          = 'di_sun';
-                } else {
-                    srcPictureID_M          = 'error';
-                    srcImgURL_M             = srcImgURL_M_ER;
-                }
+            var srcPictureID_M;
+            var State_M = parseFloat(_options.display_value);
+            if (State_M < level_1_M) {
+                srcPictureID_M = 'di_moon';
+            } else if (State_M >= level_1_M && State_M < level_2_M) {
+                srcPictureID_M = 'di_cloud';
+            } else if (State_M >= level_2_M) {
+                srcPictureID_M = 'di_sun';
+            } else {
+                srcPictureID_M = 'error';
+                srcImgURL_M = srcImgURL_M_ER;
+            }
             // Update IMG + gestion erreur
-                if (srcPictureID_M == "error"){
-                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL_M +srcImglogoER_M+ +'.'+ srcImglogoER_M_T+'" style="height:' + srcImgHeight_M +'px;width:' + srcImgWidth_M +'px;">');
-                } else {
-                    $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="'+srcImgURL_M +srcPictureID_M+ '.png" style="height:' + srcImgHeight_M +'px;width:' + srcImgWidth_M +'px;">');
-                }
-            $('.cmd[data-cmd_uid=#uid#] .value#id#').empty().append(_options.display_value+' '+'#unite#');
-            $('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
+            if (srcPictureID_M == "error") {
+                $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="' + srcImgURL_M + srcImglogoER_M + +'.' + srcImglogoER_M_T + '" style="height:' + srcImgHeight_M + 'px;width:' + srcImgWidth_M + 'px;">');
+            } else {
+                $('.cmd[data-cmd_uid=#uid#] .iconCmd#id#').html('<img src="' + srcImgURL_M + srcPictureID_M + '.png" style="height:' + srcImgHeight_M + 'px;width:' + srcImgWidth_M + 'px;">');
+            }
+            $('.cmd[data-cmd_uid=#uid#] .value#id#').empty().append(_options.display_value + ' ' + '#unite#');
+            $('.cmd[data-cmd_id=#id#]').attr('title', 'Valeur du ' + _options.valueDate + ', collectée le ' + _options.collectDate);
         }
-        jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
-	</script>
+        jeedom.cmd.update['#id#']({
+            display_value: '#state#',
+            valueDate: '#valueDate#',
+            collectDate: '#collectDate#',
+            alertLevel: '#alertLevel#'
+        });
+
+    </script>
 </div>
